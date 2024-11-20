@@ -1,7 +1,6 @@
 #include "biquad.h"
 
-
-int bq_df1_init(struct bq_struct* bq_inst, bq_type coefs[5])
+int bq_df1_init(struct bq_struct* bq_inst, const bq_type coefs[5])
 {
     bq_inst->w0 = 0;
 
@@ -18,7 +17,9 @@ int bq_df1_init(struct bq_struct* bq_inst, bq_type coefs[5])
     bq_inst->coefs[4] = -coefs[4];
     return 0;
 }
-void bq_df1_process(struct bq_struct* bq_inst, bq_type* input, bq_type* output, size_t input_len)
+
+
+void bq_df1_process(struct bq_struct* const bq_inst, const bq_type* __restrict input, bq_type* __restrict output, size_t input_len)
 {
 
     int8_t w1, w2, w3;
