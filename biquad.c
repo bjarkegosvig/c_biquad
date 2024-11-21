@@ -31,6 +31,7 @@ void bq_df1_process(struct bq_struct* const bq_inst, const bq_type* __restrict i
 
         // update delay line
         bq_inst->w0 = bq_inst->w0 ^ 1; // toggle w0 between 0 and 1
+        w1 = w1 ^ 1;
         w2 = bq_inst->w0 + 2;
         w3 = w1 + 2;
         bq_inst->delay_line[bq_inst->w0] = input[i];
