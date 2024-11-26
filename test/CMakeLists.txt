@@ -21,6 +21,9 @@ include(GoogleTest)
 # Create a test executable 
 add_executable(bq_test "")
 
+# O0 and ggdb compile flags for debugging
+target_compile_options(bq_test PUBLIC -ggdb -g3 -O0 -Wall -Werror)
+
 # Specify source files to the target executable
 target_sources(bq_test PRIVATE
     bq_test.cpp

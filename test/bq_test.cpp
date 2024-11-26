@@ -8,7 +8,7 @@ extern "C" {
 TEST(BiquadTest, initTest)
 {
     struct bq_struct bq;
-    int32_t len = 48;
+
     bq_type coefs[5] = { 1, 2, 3, 4, 5 };
     bq_df1_init(&bq, coefs);
     for (size_t i = 0; i < 3; i++) {
@@ -33,8 +33,8 @@ TEST(BiquadTest, lowPassFilterTest)
 
     bq_type coefs[5] = { 0.01292156453915951041, 0.01292156453915951041, 0.00000000000000000000, -0.97415687092168101735, 0.00000000000000000000 };
     bq_df1_init(&bq, coefs);
-    bq_df1_process(&bq, input, output, 48);
-    for (size_t i = 0; i < 48; i++) {
+    bq_df1_process(&bq, input, output, len);
+    for (size_t i = 0; i < (size_t)len; i++) {
         ASSERT_NEAR(output[i], ref[i], 0.0000001);
     }
 }
